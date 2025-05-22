@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>travelstud.com - Book your travel to Dubai</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <script src="server.js"></script>
+</head>
+<body>
+  <div class="container">
+    <button class="toggle-mode" onclick="toggleMode()">Toggle Mode</button>
+
+    <header class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Logo" />
+      <h1>TravelStud</h1>
+      <p>Book your travel to Dubai</p>
+    </header>
+
+    <form class="booking-form">
+      <h2>TRAVEL BOOKING FORM</h2>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Enter your name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" type="number" placeholder="Enter your age" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" placeholder="Enter your phone number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="add">Address</label>
+        <textarea name="Address" id="add" placeholder="Enter your address" required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- AI Assistant Chatbot -->
+  <div id="chatbot">
+    <div id="chat-header">🧠 Travel Assistant</div>
+    <div id="chat-body">
+      <div class="chat-msg bot">Hi! Need help booking your Dubai trip?</div>
+    </div>
+    <input type="text" id="chat-input" placeholder="Ask something..." onkeydown="handleChat(event)" />
+  </div>
+
+  <!-- Sound effect -->
+  <audio id="toggleSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

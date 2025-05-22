@@ -1,0 +1,265 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap');
+
+:root {
+  /* Light mode colors */
+  --bg-color: #f2f6ff;
+  --card-bg: #ffffff;
+  --text-color: #2a2a2a;
+  --input-bg: #f8f9fc;
+  --primary: #6a11cb;
+  --secondary: #2575fc;
+  --accent: #ff4e50;
+  --glow: #b621fe;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #ffffff;
+  --input-bg: #2a2a2a;
+  --primary: #ff4e50;
+  --secondary: #fc466b;
+  --accent: #1fd1f9;
+  --glow: #00ffe0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.container {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  max-width: 460px;
+  width: 100%;
+  animation: popIn 0.8s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glowing animation border */
+.container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--primary));
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.3;
+}
+
+/* Content over glow */
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 60px;
+  animation: float 2s infinite ease-in-out;
+}
+
+.logo h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.logo p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Form Styling */
+.booking-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--secondary);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  background: var(--input-bg);
+  color: var(--text-color);
+  transition: border 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 6px var(--glow);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark/Light toggle */
+.toggle-mode {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 20px;
+  padding: 5px 12px;
+    
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.toggle-mode:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Animations */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px;
+  }
+}
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 280px;
+  background: var(--card-bg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#chat-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+#chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 180px;
+}
+
+.chat-msg {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 85%;
+}
+
+.chat-msg.user {
+  background: var(--primary);
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-msg.bot {
+  background: #eee;
+  color: #000;
+  align-self: flex-start;
+}
+
+#chat-input {
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-top: 1px solid #ccc;
+  outline: none;
+}
